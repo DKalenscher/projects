@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+<head>
+
+<title>User Information</title>
+
+<style>
+fieldset{
+	
+	width: 500px;
+	margin:auto;
+	
+	
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+input {
+	margin-left: 25px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+  	display: inline-block;
+ 	float: left;
+}
+
+</style>
+
+<script type="text/javascript">
+function setCookie()
+{
+	var expireDate = new Date();
+	expireDate.setFullYear(expireDate.getFullYear() + 1);
+	document.cookie = encodeURI("fullname=" + document.getElementById("fullName").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("address=" + document.getElementById("address").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("city=" + document.getElementById("city").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("state=" + document.getElementById("state").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("zip=" + document.getElementById("zip").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("phone=" + document.getElementById("phone").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("birthDate=" + document.getElementById("birthDate").value) + "; expires=" + expireDate.toUTCString();
+	document.cookie = encodeURI("salary=" + document.getElementById("salary").value) + "; expires=" + expireDate.toUTCString();
+	
+	window.alert("Your personal information has been saved.");
+
+}
+function getCookie()
+{
+	var information = decodeURI(document.cookie);
+	var info = information.split("; ");
+
+
+	if(information.length > 0) {
+		
+		
+    	
+    	for(i = 0; i < 8; i++){
+    	
+		 if (info[i].substring(0,info[i].indexOf("=")) == "fullname") {
+			  storedFullName = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("fullName").value = storedFullName;
+				
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "address") {
+			  storedAddress = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("address").value = storedAddress;
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "city") {
+			  storedCity = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("city").value = storedCity;
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "state") {
+			  storedState = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("state").value = storedState;
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "zip") {
+			  storedZip = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("zip").value = storedZip;
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "phone") {
+			  storedPhone = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("phone").value = storedPhone;
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "birthDate") {
+			  storedBirthDate = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+				document.getElementById("birthDate").value = storedBirthDate;
+			}
+			if (info[i].substring(0,info[i].indexOf("=")) == "salary") {
+			  storedSalary = info[i].substring(info[i].indexOf("=") + 1,info[i].length);
+			  document.getElementById("salary").value = storedSalary;
+			  
+			}
+		}//end for
+
+
+
+	}//end if length > 0    
+               
+                      
+
+} // end getCookie()
+</script>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<body onload="getCookie();">
+
+<h2>Please enter your information below.</h2>
+<br />
+<fieldset>
+<legend>Personal Info</legend>
+<label for="fullName">Full Name</label><input id="fullName" type="text" /><br />
+<label for="address">Address</label><input id="address" type="text" /> <br />
+<label for="city">City</label><input id="city" type="text" /> <br />
+<label for="state">State</label><input id="state" type="text" /><br />
+<label for="zip">Zip</label><input id="zip" type="text" /><br />
+<label for="phone">Tel No</label><input id="phone" type="tel"/><br />
+<label for="birthDate">Birth Date</label><input id="birthDate"  type="date"/><br />
+<label for="salary">Yearly Salary</label><input id="salary" maxlength="10" type="number"/><br />
+<br /><br /><br /><br /><br /><br />
+
+<input id="btnSave" onclick="setCookie(); this.disabled=true;" type="button" value="Save for later" />
+
+</fieldset>
+
+
+
+</body>
+
+</html>

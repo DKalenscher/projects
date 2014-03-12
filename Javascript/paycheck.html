@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+
+<script type="text/javascript">
+	function tax(){
+		
+			
+		var maritalStatus = prompt("What is your marital status?", "(M)arried or (S)ingle");
+		var dependents = prompt("How many dependents do you have?", "0 - 4");
+		var hoursWorked = prompt ("How many hours have you worked?", 0.00);
+		var hourlyRate = prompt ("What is your hourly rate?", 0.00);
+		var grossPay = hoursWorked * hourlyRate;	
+		
+		
+		document.write("Marital Status: " + maritalStatus + "<br>");
+		document.write("Dependents: " + dependents+ "<br>");
+		document.write("Hours Worked: " + hoursWorked+ "<br>");
+		document.write("Hourly Rate: " + hourlyRate+ "<br>");
+		document.write("Gross Pay (before taxes): " + grossPay + "<br>");
+		//document.write("Your Net Pay is: " + (grossPay - (grossPay * .20)));
+		var taxrate = 0;
+		
+		switch(maritalStatus){
+			case 'M':
+			case 'm':				
+				switch(dependents){
+					case '0':
+						taxrate = .20;
+						break;
+					
+					case '1':
+						taxrate = .15;
+						break;
+					
+					case '2':
+						taxrate = .10;
+						break;
+					
+					case '3':
+						taxrate = .0472;
+						break;
+					
+					case '4':
+						taxrate = .00;
+						break;
+						
+					
+					default:
+						document.write("Must select 0 - 4 dependents");
+						break;
+					}
+				break;	
+				case 'S':
+				case 's':			
+					switch(dependents){
+						case '0':
+							taxrate = .30;
+							break;
+						
+						case '1':
+							taxrate = .2675;
+							break;
+						
+						case '2':
+							taxrate = .20;
+							break;
+						
+						case '3':
+							taxrate = .1788;
+							break;
+						
+						case '4':
+							taxrate = .0702;
+							break;
+						
+						default:
+							document.write("Must select 0 - 4 dependents");
+							break;
+	
+						}
+
+				break;
+				default:
+				document.write("Must select either M or S");
+
+			}//end switch(maritalstatus)
+			
+		
+			document.write("Your tax deduction is: " + "<span style='color:red;'><b>" + (grossPay * taxrate) + "</b></span><br>");
+			document.write("Your Net Pay is: " + (grossPay - (grossPay * taxrate)));
+		
+		
+		}//end function
+
+
+
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+	<script type="text/javascript">
+		tax();	
+	</script>
+	
+
+ 
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>BMI Calculator</title>
+<style type="text/css">
+label {
+	width:100px;
+	display:inline-block;
+}
+input {
+	width: 100px;
+}
+fieldset {
+	 width: 600px;
+	 border:2px black solid;
+	 padding-left: .10in;
+}
+#btnCalculate {
+	margin-left:1.05in;
+}
+</style>
+
+<script type="text/javascript">
+
+	function calculateBMI(){
+		var result = document.getElementById("result");
+		var height = document.getElementById("inHeight").value;
+		var weight = document.getElementById("inWeight").value;
+		var bmi = (weight*703)/Math.pow(height,2);
+		document.getElementById("outBMI").value = bmi.toString();
+				
+		if(bmi >=30){
+			result.innerHTML = "RESULT:  Obese";
+			document.getElementById("result").style.backgroundColor = "red";
+			document.getElementById("result").style.color = "white";
+		}
+		else if(bmi >=25 && bmi < 30){
+			result.innerHTML = "RESULT:  Overweight";
+			document.getElementById("result").style.backgroundColor = "orange";
+			document.getElementById("result").style.color = "white";
+		}
+		else if(bmi >= 18.5 && bmi <25){
+			result.innerHTML = "RESULT:  Normal";
+			document.getElementById("result").style.backgroundColor = "green";
+			document.getElementById("result").style.color = "white";
+		}
+		else if(bmi < 18.5){
+			result.innerHTML = "RESULT:  Malnourished";
+			document.getElementById("result").style.backgroundColor = "maroon";
+			document.getElementById("result").style.color = "white";
+		}
+		
+		
+		
+	}
+		
+	function obese(bmi){
+		this.color = "red";
+	}	
+	function overweight(bmi){
+		this.color = "orange";
+
+	}	
+	function normal(bmi){
+		this.color = "green";
+	}	
+	function malnourished(bmi){
+		this.color = "maroon";
+	}	
+</script>
+
+</head>
+
+<body>
+
+<fieldset>
+<legend>Information</legend>
+<label id="Label1" for="txtName">Full Name</label><input id="inFullName" name="txtName" type="text" /><br />
+<label id="Label2" for="txtWeight">Weight</label><input id="inWeight" name="txtWeight" type="text" /><br />
+<label id="Label3" for="txtHeight">Height</label><input id="inHeight" name="txtHeight" type="text" /><br />
+<label id="Label4" for="txtBMI">BMI</label><input id="outBMI" name="txtBMI" type="text" /><br />
+<br />
+<input id="btnCalculate" name="Button1" type="button" value="Calculate" onclick="calculateBMI()"/><br /><br />
+<p id="result" style="width:205px;font-weight:bold;text-align: center;"></p>
+</fieldset>
+
+</body>
+
+</html>
